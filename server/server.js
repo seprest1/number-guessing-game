@@ -22,13 +22,10 @@ app.post('/checkguess', (req, res) => {
   if (roundCount === 1) {
     randomNumberGen();
   }
-  console.log(randomNumber);
-  console.log('post request sent. req.body is ', req.body)
   //gives req.body a name we can understand
   let playerGuesses = req.body;
   //adding roundCount to body object
   playerGuesses.roundCount = roundCount;
-
   //sends player guess object to checkPlayerGuesses
   checkPlayerGuesses(playerGuesses);
   //response: success! (2xx==success)
@@ -37,10 +34,18 @@ app.post('/checkguess', (req, res) => {
 
 //  SENDING Round Data to CLIENT
 app.get('/checkguess', (req, res) => { //route names... should these be the same or different?
-  console.log('get request sent');
+  //console.log('get request sent');
   //sends object of player evaluated player guesses
     res.send(playerGuessEvaluation);
 });
+
+app.post('/newgame', (req, res) => {
+  console.log('in /newgame')
+  console.log('req.body is ', req.body);
+  playerGuessEvaluation = [];
+  roundCount = 0;
+  res.sendStatus(201);
+})
 
 app.listen(PORT, () => {
   console.log ('Server is running on port', PORT, 'http://localhost:5000/')
@@ -52,42 +57,34 @@ function randomNumberGen() {
 }
 
 function checkPlayerGuesses(guessObject) {
-  console.log(guessObject);
+//console.log(guessObject);
 // compares player guesses to randomNumber
 //playerOne
-if (guessObject.playerOne === String(randomNumber)) {
-  guessObject.playerOne = 'match';
-} else if (guessObject.playerOne < randomNumber) {
-  guessObject.playerOne = 'low';
-} else if (guessObject.playerOne > randomNumber) {
-  guessObject.playerOne = 'high';
-}
-//playerTwo
-if (guessObject.playerTwo === String(randomNumber)) {
-  guessObject.playerTwo = 'match';
-} else if (guessObject.playerTwo < randomNumber) {
-  guessObject.playerTwo = 'low';
-} else if (guessObject.playerTwo > randomNumber) {
-  guessObject.playerTwo = 'high';
-}
-//playerThree
-if (guessObject.playerThree === String(randomNumber)) {
-  guessObject.playerThree = 'match';
-} else if (guessObject.playerThree < randomNumber) {
-  guessObject.playerThree = 'low';
-} else if (guessObject.playerThree > randomNumber) {
-  guessObject.playerThree = 'high';
-}
-// for each player object:
-//  compare guess to random number.
-//  give value: High, Low, Match
-//  output to playerGuessEvaluation:
-//    {
-//      { player, guessValue },
-//      {player, guessValue},
-//    }
-  //pushes body object to player guess history array
-  console.log(guessObject);
-  playerGuessEvaluation.push(guessObject);
-  console.log(playerGuessEvaluation);
+  if (guessObject.playerOne === String(randomNumber)) {
+    guessObject.playerOne = `⭐ 🌟 ${randomNumber} 🌟 ⭐`;
+  } else if (guessObject.playerOne < randomNumber) {
+    guessObject.playerOne = 'low';
+  } else if (guessObject.playerOne > randomNumber) {
+    guessObject.playerOne = 'high';
+  }
+  //playerTwo
+  if (guessObject.playerTwo === String(randomNumber)) {
+    guessObject.playerTwo = `⭐ 🌟 ${randomNumber} 🌟 ⭐`;
+  } else if (guessObject.playerTwo < randomNumber) {
+    guessObject.playerTwo = 'low';
+  } else if (guessObject.playerTwo > randomNumber) {
+    guessObject.playerTwo = 'high';
+  }
+  //playerThree
+  if (guessObject.playerThree === String(randomNumber)) {
+    guessObject.playerThree = `⭐ 🌟 ${randomNumber} 🌟 ⭐`;
+  } else if (guessObject.playerThree < randomNumber) {
+    guessObject.playerThree = 'low';
+  } else if (guessObject.playerThree > randomNumber) {
+    guessObject.playerThree = 'high';
+  }
+    //pushes body object to player guess history array
+    //console.log(guessObject);
+    playerGuessEvaluation.push(guessObject);
+    //console.log(playerGuessEvaluation);
 }

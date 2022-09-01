@@ -4,6 +4,7 @@ function onReady() {
   console.log("jquery is loaded!")
   $('#submit-btn').on('click', sendPlayerGuess);
   $('#newGame-btn').on('click', newGamePlease);
+  //can we a .val() listener?
 }
 
 //  SENDING Player Guess to SERVER
@@ -42,8 +43,16 @@ function fetchGameHistory() {
       `)
     }
   })
+  
 }
 
 function newGamePlease() {
-
+  $.ajax( { 
+    method: 'POST',
+    url: '/newgame',
+    data: []
+  }).then(function(gameResponse) {
+    console.log(gameResponse);
+    fetchGameHistory();
+  })
 }
