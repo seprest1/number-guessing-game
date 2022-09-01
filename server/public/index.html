@@ -10,7 +10,35 @@
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
-<body>
-    <h1>YOUR GAME HERE!</h1>
-</body>
+  <body>
+    <div id="container">
+    <header>
+      <h1 id = "header">POD 3 SUPER FANTASTIC NUMBER GUESSING GAME</h1>
+    </header>
+    <main>
+      <section class="inputFields">
+        <input class = "inputs" id="playerOne" type="password" placeholder="Player One">
+        <input class = "inputs" id="playerTwo" type="password" placeholder="Player Two">
+        <input class = "inputs" id="playerThree" type="password" placeholder="Player Three">
+        <button class = "buttons" id="submit-btn">Submit</button>
+        <button class = "buttons" id="newGame-btn">New Game</button>
+      </section>
+      <table>
+        <thead>
+          <th>Round</th>
+          <th>Player One</th>
+          <th>Player Two</th>
+          <th>Player Three</th>
+        </thead>
+        <tbody id="tableBody">
+          <!-- Round Results Go Here -->
+        </tbody>
+      </table>
+      <div id = "winnerMessage">
+        <h1 id = "winner">HOLY GUACAMOLE YOU WON!!!!!!!!! </h1>
+      </div>
+    </main>
+    </div>
+  </body>
 </html>
+

@@ -1,0 +1,65 @@
+body {
+    background-color: black;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+}
+.container{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr auto;
+    grid-area:
+    "header"
+    "inputs"
+    "table"
+}
+#header {
+    background-color: darkslategrey;
+    color: black;
+    height: 100px;
+    grid-area: header;
+    padding: 50px 20px 0px;;
+    font-size: 60px;
+}
+thead {
+    background-color: darkolivegreen;
+}
+table {
+    border: 1px solid white;
+    grid-area: table;
+    margin: 20px 400px;
+}
+tbody {
+    border: 1px solid white;
+    color: greenyellow;
+}
+.inputs {
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    height: 30px;
+    font-size: large;
+}
+.inputFields {
+    margin: 20px;
+    padding: 20px;
+    grid-area: inputs;
+}
+th {
+    min-width: 250px;
+    height: 50px;
+    font-size: large;
+}
+.buttons {
+    background-color: greenyellow;
+    height: 30px;
+    width: 150px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+}
+#winnerMessage{
+    background-color: greenyellow;
+    height: 150px;
+    margin-top: 50px;
+    padding-top: 50px;
+    display: none;
+}
