@@ -62,6 +62,7 @@ function checkPlayerGuesses(guessObject) {
 //playerOne
   if (guessObject.playerOne === String(randomNumber)) {
     guessObject.playerOne = `⭐ 🌟 ${randomNumber} 🌟 ⭐`;
+    // winnerFound = 1;
   } else if (guessObject.playerOne < randomNumber) {
     guessObject.playerOne = 'low';
   } else if (guessObject.playerOne > randomNumber) {

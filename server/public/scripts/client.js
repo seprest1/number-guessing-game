@@ -5,6 +5,7 @@ function onReady() {
   $('#submit-btn').on('click', sendPlayerGuess);
   $('#newGame-btn').on('click', newGamePlease);
   //can we a .val() listener?
+  
 }
 
 //  SENDING Player Guess to SERVER
