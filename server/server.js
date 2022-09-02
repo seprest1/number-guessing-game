@@ -13,7 +13,7 @@ app.use(express.static('server/public'));
 
 let randomNumber;
 let roundCount = 0;
-let playerGuessEvaluation = [];
+let gameHistory = [];
 let maxNum = 25;
 
 //  RECEIVING Player Guess from CLIENT
@@ -36,13 +36,13 @@ app.post('/checkguess', (req, res) => {
 app.get('/checkguess', (req, res) => { //route names... should these be the same or different?
   //console.log('get request sent');
   //sends object of player evaluated player guesses
-    res.send(playerGuessEvaluation);
+    res.send(gameHistory);
 });
 
 app.post('/newgame', (req, res) => {
   console.log('in /newgame')
   console.log('req.body is ', req.body);
-  playerGuessEvaluation = [];
+  gameHistory = [];
   roundCount = 0;
   res.sendStatus(201);
 })
@@ -86,6 +86,6 @@ function checkPlayerGuesses(guessObject) {
   }
     //pushes body object to player guess history array
     //console.log(guessObject);
-    playerGuessEvaluation.push(guessObject);
-    //console.log(playerGuessEvaluation);
+    gameHistory.push(guessObject);
+    //console.log(gameHistory);
 }
